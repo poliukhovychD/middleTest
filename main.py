@@ -4,6 +4,10 @@ def filter_file_by_keywords(input_filename, keywords):
 
     filtered_lines = [line for line in lines if any(keyword in line for keyword in keywords)]
 
+    if len(filtered_lines) == 0:
+        print("No lines containing the keywords were found.")
+        return
+
     filtered_string = ''.join(filtered_lines)
     write_to_file(filtered_string)
 
@@ -12,6 +16,7 @@ def filter_file_by_keywords(input_filename, keywords):
         print(line.strip())
 
     print(f"\nTotal lines containing any of the keywords: {len(filtered_lines)}")
+
 
 def write_to_file(string):
     with open('filtered.txt', 'w') as output_file:

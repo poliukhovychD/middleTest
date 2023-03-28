@@ -1,1 +1,1 @@
-lol what is this
+This is a test string to write to file.
