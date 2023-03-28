@@ -1,11 +1,17 @@
 import os
+import pytest
 from main import write_to_file
 
-def test_write_to_file():
-    string = "This is a test string to write to file."
-    write_to_file(string)
+@pytest.mark.parametrize("input_string", [
+    "This is a test string to write to file.",
+    "Another string for testing.",
+    "1234",
+    "",
+])
+def test_write_to_file(input_string):
+    write_to_file(input_string)
     assert os.path.exists('filtered.txt')
 
     with open('filtered.txt', 'r') as f:
         contents = f.read()
-    assert contents == string
+    assert contents == input_string
